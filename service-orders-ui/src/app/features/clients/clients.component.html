@@ -1,0 +1,42 @@
+<h2>Clients</h2>
+
+<div>
+  <input [(ngModel)]="form.fullName" placeholder="Full Name" />
+  <input [(ngModel)]="form.document" placeholder="Document" />
+  <input [(ngModel)]="form.address" placeholder="Address" />
+  <input [(ngModel)]="form.phone" placeholder="Phone" />
+
+  <button (click)="save()">Save</button>
+  <button (click)="clear()">Clear</button>
+</div>
+
+<div *ngIf="loading">
+  Loading...
+</div>
+
+<table *ngIf="!loading">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Document</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let c of clients">
+      <td>{{ c.id }}</td>
+      <td>{{ c.fullName }}</td>
+      <td>{{ c.document }}</td>
+      <td>{{ c.address }}</td>
+      <td>{{ c.phone }}</td>
+      <td>
+        <button (click)="edit(c)">Edit</button>
+        <button (click)="delete(c.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
